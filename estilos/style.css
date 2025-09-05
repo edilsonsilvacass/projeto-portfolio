@@ -18,26 +18,74 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #f5f5f5;
+  background-color: #f3efef;
   color: #333;
   padding: 10px;
 }
 
+#botao-tema {
+  background-color: #8ecae6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: background-color 0.3s;
+  
+
+
+} 
+
+body.escuro {
+  background-color: #121212;
+  color: #f3f1f1;
+}
+
+body.escuro header,
+body.escuro nav,
+body.escuro footer {
+  background-color: #1e1e1e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 /* Cabeçalho */
 header {
-  text-align: center;
+  display:flex;
+  flex-direction: column;
+  align-items: center;text-align: center;
   margin-bottom: 30px;
+  padding: 20px;
+  
+  border-radius: 10px;
+}
+.imagem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header img {
   width: 150px;
   border-radius: 50%;
   border: 2px solid #333;
+  margin-bottom: 10px;
+
 }
 
+
 h1 {
-  margin-top: 10px;
+
   font-size: 2rem;
+  margin-bottom: 5px;
+
 }
 
 main {
@@ -48,19 +96,34 @@ main {
 /* Projetos */
 .projetos {
   margin-top: 30px;
+  text-align: center;;
+
 }
 
 .galeria {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-area: auto;
   gap: 15px;
   margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(14, 28, 214, 0.1);
+
+
 }
 
 .galeria img {
   width: 100%;
   border-radius: 10px;
   transition: transform 0.3s;
+  cursor: pointer;
+  box-shadow: 0 8px 8px rgba(14, 28, 214, 0.1);
+  
+
+
+
+  
 }
 
 .galeria img:hover {
@@ -75,9 +138,10 @@ main {
 
 /* Rodapé */
 footer {
+  background-color:#8ecae6;
   text-align: center;
   margin-top: 50px;
   font-size: 0.9rem;
-  color: #777;
+  color: #070505;
 }
 
