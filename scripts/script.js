@@ -1,38 +1,39 @@
 const botao = document.getElementById('botao-tema');
 const body = document.body;
 
-// Persistência do tema
-const temasalvo = localStorage.getItem('tema');
-temaEscuro(temasalvo === 'escuro');
-
-// Função para alternar entre tema claro e escuro
-function temaEscuro(tipo) {
-  if (tipo == true) {
-    body.classList.add('escuro');
-    botao.innerHTML = '<i class="fa-solid fa-sun"></i>';
-  } else {
-    body.classList.remove('escuro');
-    botao.innerHTML = '<i class="fa-solid fa-moon"></i>';
-  }
+// Função para atualizar o ícone do botão
+function atualizarIconeTema(escuroAtivo) {
+  botao.innerHTML = escuroAtivo
+    ? '<i class="fa-solid fa-sun"></i>'
+    : '<i class="fa-solid fa-moon"></i>';
 }
 
+// Carrega tema salvo
+const temaSalvo = localStorage.getItem('tema');
+if (temaSalvo === 'escuro') {
+  body.classList.add('escuro');
+  atualizarIconeTema(true);
+} else {
+  atualizarIconeTema(false);
+}
+
+// Alternar tema ao clicar no botão
 botao.addEventListener('click', () => {
-  const isescuro = body.classList.toggle('escuro');
-  temaEscuro(isescuro);
-  localStorage.setItem('tema', isescuro ? 'escuro' : 'claro');
+  const escuroAtivo = body.classList.toggle('escuro');
+  localStorage.setItem('tema', escuroAtivo ? 'escuro' : 'claro');
+  atualizarIconeTema(escuroAtivo);
 });
 
-// Scroll suave para links de navegação
-const navLinks = document.querySelectorAll('#menu ul a.link');
+// Scroll suave para links do menu
+const navLinks = document.querySelectorAll('nav ul a');
 navLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      const headerHeight = document.querySelector('header').offsetHeight;
-      const targetPosition = target.offsetTop - headerHeight - 20;
+  link.addEventListener('click', function (e) {
+    const alvo = document.querySelector(this.getAttribute('href'));
+    if (alvo) {
+      e.preventDefault();
+      const offset = alvo.offsetTop - 20;
       window.scrollTo({
-        top: targetPosition,
+        top: offset,
         behavior: 'smooth'
       });
     }
