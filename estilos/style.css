@@ -8,13 +8,17 @@
   --fundo-card
 */
 /* Reset básico */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Corpo */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -22,12 +26,8 @@ body {
   color: #333;
   padding: 10px;
 }
-@media (max-width: 600px) {
-  body {
-    padding: 1.5rem;
-  }
-}
 
+/* BOTÃO DE TEMA */
 #botao-tema {
   background-color: #8ecae6;
   color: white;
@@ -40,61 +40,94 @@ body {
   right: 10px;
   z-index: 1000;
   transition: background-color 0.3s;
-  
+}
 
-
-} 
 #botao-tema:hover {
   background-color: #219ebc;
 }
 
-nav ul { display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-area: auto;
-  gap: 15px;
-  margin-top: 20px;
+/* HEADER */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+header img {
+  width: 120px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+/* NAV */
+nav {
+  background-color: #8ecae6;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 8px 8px rgba(14, 28, 214, 0.1);
-
-
-  
+  margin-bottom: 20px;
+}
+nav ul {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+  padding: 10px;
+  margin: 0;
 
 }
-nav a {
+
+
+nav ul li a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
   transition: color 0.3s;
 }
-
-
-body.escuro nav a {
-  color: #1d1a1a;
+nav ul li a:hover {
+  color: #219ebc;
+}
+@media (min-width: 600px) {
+  nav ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+  }
 }
 
+/* MODO ESCURO */
 body.escuro {
   background-color: #121212;
   color: #f3f1f1;
-}body.escuro footer {
-  background-color: #333;
+}
+
+body.escuro nav a {
   color: #f3f1f1;
+}
+
+body.escuro footer,
+body.escuro header,
+body.escuro nav {
+  background-color: #1e1e1e;
 }
 
 body.escuro #botao-tema {
   background-color: #219ebc;
 }
 
-
-
-body.escuro header,
-body.escuro nav,
 body.escuro footer {
-  background-color: #1e1e1e;
-}
-
-html {
-  scroll-behavior: smooth;
+  background-color: #333;
+  color: #f3f1f1;
 }
 
 
@@ -172,7 +205,46 @@ main {
 .contato {
   margin-top: 40px;
   text-align: center;
+}/* Base (mobile-first) */
+
+.contato h2 a {
+  margin-left: 10px;
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
 }
+
+.contato h2 a:hover {
+  color: #219ebc; /* Cor ao passar o mouse */
+}
+
+.galeria {
+  grid-template-columns: 1fr;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Ultrawide */
+@media (min-width: 1440px) {
+  .galeria {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
 
 /* Rodapé */
 footer {
