@@ -211,7 +211,7 @@ main {
 
 @media (min-width: 1025px) {
   .galeria {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: repeat(3, 1fr);
   }
 }
 
@@ -226,7 +226,7 @@ main {
 ========================== */
 .contato {
   margin-top: 40px;
-  text-align: center;
+  
 }
 
 .contato h2 a {
